@@ -1,29 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import Screen1 from '../WEEK6/src/Screen1';
-
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from './src/HomeScreen';
+import ShopNear from './src/ShopNear';
+import Drinks from './src/Drinks';
+import Orders from './src/Orders';
+const Stack = createStackNavigator();
 export default function App() {
-  const Stack = createNativeStackNavigator();
-
   return (
+    // man hinh cafe
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name = 'Screen01' component={Screen1}/>       
+        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="ShopNear" component={ShopNear} options={{headerShown: false}} />
+        <Stack.Screen name="Drinks" component={Drinks} options={{headerShown: false}}/>
+        <Stack.Screen name="Orders" component={Orders} options={{headerShown: true}}/>
       </Stack.Navigator>
-
     </NavigationContainer>
-    
-    );
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
